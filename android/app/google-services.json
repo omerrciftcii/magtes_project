@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "858465291425",
+    "firebase_url": "https://magtes-909e9.firebaseio.com",
+    "project_id": "magtes-909e9",
+    "storage_bucket": "magtes-909e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858465291425:android:f7c98b157edb819c7df4e0",
+        "android_client_info": {
+          "package_name": "com.example.setup_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858465291425-oni3rjnsele6saghrn37k7l99em2tidd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI07knn0baiOfzj4XJw5qHSN9yzKbTLL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858465291425-oni3rjnsele6saghrn37k7l99em2tidd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
