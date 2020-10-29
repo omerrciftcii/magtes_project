@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-abstract class BaseStuffModel {
+ class BaseStuffModel {
   final String id;
   final String title;
   final int count;
