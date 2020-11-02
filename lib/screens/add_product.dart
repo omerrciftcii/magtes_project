@@ -1,17 +1,16 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:setup_1/models/electronic_tool.dart';
 import 'package:setup_1/providers/add_product_provider.dart';
-
-import '../models/base_stuff.dart';
-import '../models/base_stuff.dart';
-import '../services/firebase_database.dart';
+import 'package:setup_1/services/firebase_database.dart';
 
 class AddProduct extends StatelessWidget {
   var titleController = TextEditingController();
-  var collectionNameController = TextEditingController();
+  var locationController = TextEditingController();
   var isBrokenController = TextEditingController();
-  var imageUrlController = TextEditingController();
-  var idController = TextEditingController();
+  var barcodeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +27,9 @@ class AddProduct extends StatelessWidget {
             ),
             TextField(
               decoration: InputDecoration(
-                hintText: 'Id',
+                hintText: 'Location',
               ),
-              controller: idController,
-            ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'CollectionName',
-              ),
-              controller: collectionNameController,
+              controller: locationController,
             ),
             DropdownButton(
               value: addProductProvider.isBroken,
@@ -60,29 +53,23 @@ class AddProduct extends StatelessWidget {
             ),
             TextField(
               decoration: InputDecoration(
-                hintText: 'Image Url',
+                hintText: 'Barcode',
               ),
-              controller: imageUrlController,
+              controller: barcodeController,
             ),
             FlatButton(
               child: Text('Save to database'),
               onPressed: () {
-                BaseStuffModel baseStuffModel = BaseStuffModel(
-                    id: idController.text,
-                    isBroken: addProductProvider.isBroken,
-                    title: titleController.text,
-                    imageUrl: imageUrlController.text);
-
-                print(baseStuffModel.id);
-                print(baseStuffModel.isBroken);
-                print(baseStuffModel.title);
-                print(baseStuffModel.imageUrl);
-
+                ElectronicToolModel electronicToolModel = ElectronicToolModel(
+                  location: locationController.text,
+                  isBroken: addProductProvider.isBroken,
+                  title: titleController.text,
+                  id: DateTime.now().millisecondsSinceEpoch.toString(),
+                  barcode: barcodeController.text,
+                  // count: 0,
+                );
                 FirebaseDatabaseService.writeToDb(
-                    baseStuff: baseStuffModel,
-                    collectionName: collectionNameController.text,
-                    id: idController.text,
-                    imageUrl: imageUrlController.text,);
+                    electronicToolModel: electronicToolModel);
               },
             )
           ],
