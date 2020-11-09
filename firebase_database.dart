@@ -13,11 +13,12 @@ class FirebaseDatabaseService {
   }
 
   static Future<List<ElectronicToolModel>> readsFromDb() async {
+    var jsonGetData;
     var getData =
         await FirebaseFirestore.instance.collection("elektronikTools").get();
-    var jsonGetData = convert.jsonEncode(getData) as List;
-    return jsonGetData.map(
-        (elektronicTools) => ElectronicToolModel.fromJson(elektronicTools));
+    getData.docs.map((e) => jsonGetData);
+    //var jsonGetData = convert.jsonEncode(getData) as List;
+    return jsonGetData;
   }
 
   static Future<List<ElectronicToolModel>> readFromDb(id) async {
